@@ -384,3 +384,5 @@ This project is open source and available under the MIT License.
 ## 👨‍💻 Author
 
 Built with ❤️ for financial empowerment and modern web development.
+GitHub: https://github.com/Shail-Shivangi/finTrack
+
