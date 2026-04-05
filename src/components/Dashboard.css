@@ -7,12 +7,49 @@
 
 h1 {
   text-align: center;
-  color: #ffffff;
-  font-size: 2.5em;
-  margin-bottom: 10px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  letter-spacing: 0.5px;
-  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 40%, #00b4d8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: white;
+  background-clip: text;
+  font-size: 3.5em;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  font-weight: 900;
+  animation: slideInDown 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-transform: capitalize;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.1));
+  line-height: 1.2;
+}
+
+.subtitle {
+  display: block;
+  font-size: 0.42em;
+  margin-top: 12px;
+  background: linear-gradient(90deg, #764ba2, #00b4d8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: white;
+  background-clip: text;
+  font-style: italic;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-transform: none;
+  text-shadow: none;
+}
+
+.dashboard > .currency-selector {
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .summary-cards {
@@ -42,9 +79,122 @@ h1 {
   font-size: 1.5em;
 }
 
+.card-icon {
+  font-size: 3em;
+  margin-bottom: 16px;
+  display: inline-block;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  animation: bounceIn 0.6s ease-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+.card-icon:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+@keyframes bounceIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.icon-balance {
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.25), rgba(52, 152, 219, 0.08));
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+}
+
+.icon-balance:hover {
+  box-shadow: 0 6px 16px rgba(52, 152, 219, 0.25);
+}
+
+.icon-income {
+  background: linear-gradient(135deg, rgba(46, 204, 113, 0.25), rgba(46, 204, 113, 0.08));
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.15);
+}
+
+.icon-income:hover {
+  box-shadow: 0 6px 16px rgba(46, 204, 113, 0.25);
+}
+
+.icon-expense {
+  background: linear-gradient(135deg, rgba(231, 76, 60, 0.25), rgba(231, 76, 60, 0.08));
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.15);
+}
+
+.icon-expense:hover {
+  box-shadow: 0 6px 16px rgba(231, 76, 60, 0.25);
+}
+
+.icon-transaction {
+  background: linear-gradient(135deg, rgba(155, 89, 182, 0.25), rgba(155, 89, 182, 0.08));
+  box-shadow: 0 4px 12px rgba(155, 89, 182, 0.15);
+}
+
+.icon-transaction:hover {
+  box-shadow: 0 6px 16px rgba(155, 89, 182, 0.25);
+}
+
 .card p {
   font-size: 1.2em;
   color: #7f8c8d;
+}
+
+/* Chart Icon Styling */
+.chart-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 0 20px 0;
+  font-size: 1.8em;
+  color: #2c3e50;
+}
+
+.chart-icon {
+  font-size: 2.5em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  animation: bounceIn 0.6s ease-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+.chart-icon:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.balance-chart-icon {
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.25), rgba(52, 152, 219, 0.08));
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+}
+
+.balance-chart-icon:hover {
+  box-shadow: 0 6px 16px rgba(52, 152, 219, 0.25);
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.35), rgba(52, 152, 219, 0.15));
+}
+
+.expense-chart-icon {
+  background: linear-gradient(135deg, rgba(231, 76, 60, 0.25), rgba(231, 76, 60, 0.08));
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.15);
+}
+
+.expense-chart-icon:hover {
+  box-shadow: 0 6px 16px rgba(231, 76, 60, 0.25);
+  background: linear-gradient(135deg, rgba(231, 76, 60, 0.35), rgba(231, 76, 60, 0.15));
 }
 
 .visualizations {

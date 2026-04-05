@@ -89,7 +89,7 @@ const TransactionEditor = () => {
     }
 
     dispatch({ type: 'DELETE_TRANSACTION', payload: Number(id) });
-    setSuccessMessage('Transaction deleted successfully!');
+    setSuccessMessage('Transaction editing ...');
     setTimeout(() => {
       setSuccessMessage('');
       navigate('/transactions');

@@ -1,0 +1,39 @@
+.role-based-ui {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.role-based-ui h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.role-selector {
+  margin-bottom: 20px;
+}
+
+.role-selector label {
+  margin-right: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+.role-selector select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.role-content {
+  padding: 15px;
+  background-color: #eaf7ff;
+  border: 1px solid #b3e5fc;
+  border-radius: 4px;
+  color: #0277bd;
+  font-size: 16px;
+}
