@@ -7,9 +7,12 @@
 
 h1 {
   text-align: center;
-  color: #2c3e50;
+  color: #ffffff;
   font-size: 2.5em;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+  font-weight: 700;
 }
 
 .summary-cards {
@@ -52,17 +55,70 @@ h1 {
 }
 
 .chart {
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background: linear-gradient(135deg, #ffffff, #f9f9f9);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 25px;
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s ease;
+  border: 2px solid #ecf0f1;
 }
 
 .chart:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.chart-clickable {
+  cursor: pointer;
+  border: 2px solid #3498db;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-clickable::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.1), transparent);
+  transition: left 0.4s ease;
+  pointer-events: none;
+}
+
+.chart-clickable:hover::before {
+  left: 100%;
+}
+
+.chart-clickable:hover {
+  border-color: #2c3e50;
+  background: linear-gradient(135deg, #34495e, #2c3e50);
+  color: #ffffff;
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+.chart-clickable:hover h3,
+.chart-clickable:hover li {
+  color: #ffffff;
+}
+
+.chart-click-hint {
+  font-size: 13px;
+  color: #3498db;
+  margin-top: 12px;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: all 0.3s ease;
+}
+
+.chart-clickable:hover .chart-click-hint {
+  color: #ffffff;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .insights {
@@ -96,4 +152,112 @@ h1 {
   .card p {
     font-size: 1em;
   }
+}
+
+/* Recent Transactions Section */
+.transactions-list {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.transactions-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.transactions-list h3 {
+  color: #2c3e50;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.more-transactions-btn {
+  background-color: #2ecc71 !important;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.more-transactions-btn:hover {
+  background-color: #27ae60 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.transactions-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.transaction-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 15px;
+  align-items: center;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+  transition: all 0.2s ease;
+}
+
+.transaction-item:hover {
+  background: #f0f0f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-date {
+  font-size: 0.9em;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.transaction-category {
+  font-size: 0.95em;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.transaction-type {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+.transaction-type.income {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.transaction-type.expense {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.transaction-amount {
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 1em;
+  text-align: right;
+}
+
+.no-transaction-data {
+  padding: 20px;
+  text-align: center;
+  color: #888;
+  font-size: 1em;
 }
