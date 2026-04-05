@@ -71,29 +71,36 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <h1>Financial Dashboard</h1>
+      <h1 >💰 Financial Dashboard  <span className="subtitle">Track. Analyze. Succeed.</span></h1>
       <CurrencySelector />
       <div className="summary-cards">
         <div className="card">
+          <div className="card-icon icon-balance">💳</div>
           <h2>Total Balance</h2>
           <p>{formatCurrency(transactions.reduce((acc, t) => acc + (t.type === 'Income' ? t.amount : -t.amount), 0), currency)}</p>
         </div>
         <div className="card">
+          <div className="card-icon icon-income">💹</div>
           <h2>Income</h2>
           <p>{formatCurrency(transactions.filter((t) => t.type === 'Income').reduce((acc, t) => acc + t.amount, 0), currency)}</p>
         </div>
         <div className="card">
+          <div className="card-icon icon-expense">💸</div>
           <h2>Expenses</h2>
           <p>{formatCurrency(transactions.filter((t) => t.type === 'Expense').reduce((acc, t) => acc + t.amount, 0), currency)}</p>
         </div>
         <div className="card">
+          <div className="card-icon icon-transaction">📋</div>
           <h2>Total Transactions</h2>
           <p>{transactions.length}</p>
         </div>
       </div>
       <div className="visualizations">
         <div className="chart chart-clickable" onClick={() => navigate('/insights')}>
-          <h3>📈 Balance Trend</h3>
+          <h3 className="chart-heading">
+            <span className="chart-icon balance-chart-icon">📈</span>
+            Balance Trend
+          </h3>
           {balanceTrendData.length > 0 ? (
             <ul>
               {balanceTrendData.map((data, index) => (
@@ -108,7 +115,10 @@ function Dashboard() {
           <p className="chart-click-hint">Click to view chart →</p>
         </div>
         <div className="chart chart-clickable" onClick={() => navigate('/insights')}>
-          <h3>📊 Spending Breakdown</h3>
+          <h3 className="chart-heading">
+            <span className="chart-icon expense-chart-icon">📊</span>
+            Spending Breakdown
+          </h3>
           {spendingBreakdownData.length > 0 ? (
             <ul>
               {spendingBreakdownData.map((data, index) => (
