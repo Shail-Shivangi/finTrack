@@ -1,23 +1,46 @@
 import React, { useState } from 'react';
+import { useStore } from '../store/store';
 import '../styles/RoleBasedUI.css';
+import { useNavigate } from 'react-router-dom';
 
 const RoleBasedUI = () => {
-  const [role, setRole] = useState('Guest');
+  const { state, dispatch } = useStore();
+  const { userRole } = state;
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleRoleChange = (e) => {
-    setRole(e.target.value);
+    const selectedRole = e.target.value;
+    dispatch({ type: 'SET_ROLE', payload: selectedRole });
+    
+    if (selectedRole === 'Admin') {
+      setMessage('Admin mode enabled.');
+    } else {
+      setMessage('Viewer mode enabled.');
+    }
+  };
+
+  const openTransactionEditor = () => {
+    if (userRole === 'Admin') {
+      navigate('/transaction-editor');
+      return;
+    }
+    setMessage('Only Admin can add or edit transactions.');
   };
 
   const renderContent = () => {
-    switch (role) {
+    switch (userRole) {
       case 'Admin':
-        return <div className="role-content">Welcome, Admin! You have full access to the system.</div>;
-      case 'User':
-        return <div className="role-content">Welcome, User! You can view and manage your transactions.</div>;
-      case 'Guest':
-        return <div className="role-content">Welcome, Guest! Please sign in to access more features.</div>;
+        return (
+          <div className="role-content">
+            <p>Welcome, Admin! You can create, edit, and delete transactions.</p>
+            <button onClick={openTransactionEditor}>Open Transaction Editor</button>
+          </div>
+        );
+      case 'Viewer':
+        return <div className="role-content">Welcome, Viewer! You can view transactions only.</div>;
       default:
-        return <div className="role-content">Invalid role selected.</div>;
+        return <div className="role-content no-data">No role selected. Please choose a role.</div>;
     }
   };
 
@@ -26,12 +49,12 @@ const RoleBasedUI = () => {
       <h2>Role-Based UI Simulation</h2>
       <div className="role-selector">
         <label htmlFor="role">Select Role:</label>
-        <select id="role" value={role} onChange={handleRoleChange}>
+        <select id="role" value={userRole} onChange={handleRoleChange}>
           <option value="Admin">Admin</option>
-          <option value="User">User</option>
-          <option value="Guest">Guest</option>
+          <option value="Viewer">Viewer</option>
         </select>
       </div>
+      {message && <p className={`message ${userRole === 'Admin' ? 'admin-message' : 'viewer-message'}`}>{message}</p>}
       {renderContent()}
     </div>
   );
